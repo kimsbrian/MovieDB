@@ -9,7 +9,7 @@ import androidx.room.Query
 @Dao
 interface MovieDao {
 
-    @Query("SELECT * from movie_table ORDER BY movie_name ASC")
+    @Query("SELECT * from movie_table ORDER BY title ASC")
     fun getAlphabetizedMovies(): LiveData<List<Movie>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)

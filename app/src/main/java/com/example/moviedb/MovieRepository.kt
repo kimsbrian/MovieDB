@@ -10,7 +10,9 @@ class MovieRepository(private val movieDao: MovieDao) {
     // Observed LiveData will notify the observer when the data has changed.
     val allMovies: LiveData<List<Movie>> = movieDao.getAlphabetizedMovies()
 
+
     suspend fun insert(movie: Movie) {
         movieDao.insert(movie)
     }
+
 }

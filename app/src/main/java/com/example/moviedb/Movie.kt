@@ -7,9 +7,11 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "movie_table")
 data class Movie(
-    @PrimaryKey @ColumnInfo(name = "movie_name") val movieName: String,
-    @ColumnInfo(name = "poster_url") val posterURL: String?,
-    @ColumnInfo(name = "rating") val rating: Int?,
-    @ColumnInfo(name = "release_data") val releaseDate: String?,
-    @ColumnInfo(name = "summary_text") val summaryText: String?
+    @PrimaryKey @ColumnInfo(name ="id") var id: Long,
+    @ColumnInfo(name ="vote_count") var vote_count: Long,
+    @ColumnInfo(name ="vote_average") var vote_average: Float,
+    @ColumnInfo(name ="title") var title: String,
+    @ColumnInfo(name ="popularity") var popularity: Float,
+    @ColumnInfo(name ="poster_path") var poster_path: String,
+    @ColumnInfo(name ="overview") var overview: String
 )

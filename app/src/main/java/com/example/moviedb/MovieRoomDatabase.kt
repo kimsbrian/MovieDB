@@ -23,22 +23,13 @@ abstract class MovieRoomDatabase : RoomDatabase() {
                 scope.launch {
                     var movieDao = database.movieDao()
 
-                    // Delete all content here.
-                    movieDao.deleteAll()
 
-                    // Add sample movies.
-                    var movie = Movie("Hello", "google.com", 7, "6-6-2019", "gg")
-                    movieDao.insert(movie)
-                    movie = Movie("World", "google.com", 7, "6-6-2019", "gg")
-                    movieDao.insert(movie)
-
-                    // TODO: Add your own movies!
-                    movie = Movie("BYE BYE", "google.com", 7, "6-6-2019", "gg")
-                    movieDao.insert(movie)
                 }
             }
         }
     }
+
+
 
     companion object {
         @Volatile

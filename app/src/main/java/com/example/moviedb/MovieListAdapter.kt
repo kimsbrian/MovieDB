@@ -4,8 +4,12 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+
 
 class MovieListAdapter internal constructor(
     context: Context
@@ -15,7 +19,9 @@ class MovieListAdapter internal constructor(
     private var movies = emptyList<Movie>() // Cached copy of movies
 
     inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val movieItemView: TextView = itemView.findViewById(R.id.textView)
+        val movieTitleView: TextView = itemView.findViewById(R.id.movieTitle)
+        val movieRatingView: TextView = itemView.findViewById(R.id.movieRating)
+        val moviePosterView: ImageView = itemView.findViewById(R.id.moviePoster)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
@@ -25,7 +31,12 @@ class MovieListAdapter internal constructor(
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         val current = movies[position]
-        holder.movieItemView.text = current.movieName
+        holder.movieTitleView.text = current.title
+        holder.movieRatingView.text = current.vote_average.toString()
+        val myOptions = RequestOptions().override(300, 450)
+
+        Glide.with(holder.moviePosterView.context).load("https://image.tmdb.org/t/p/w500/" +current.poster_path).apply(myOptions).into(holder.moviePosterView)
+
     }
 
     internal fun setMovies(movies: List<Movie>) {
